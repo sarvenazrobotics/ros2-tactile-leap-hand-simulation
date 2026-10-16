@@ -32,7 +32,7 @@ private:
             // Look up the transform from base_link to fingertip
             geometry_msgs::msg::TransformStamped transform_stamped = 
                 tf_buffer_->lookupTransform(
-                    "base_link",    // Target frame
+                    "palm_lower",    // Target frame
                     "fingertip",    // Source frame
                     tf2::TimePointZero  // Latest available transform
                 );
@@ -51,7 +51,7 @@ private:
             // Publish as PoseStamped
             geometry_msgs::msg::PoseStamped pose_msg;
             pose_msg.header.stamp = this->now();
-            pose_msg.header.frame_id = "base_link";
+            pose_msg.header.frame_id = "palm_lower";
             pose_msg.pose.position.x = x;
             pose_msg.pose.position.y = y;
             pose_msg.pose.position.z = z;
@@ -63,12 +63,12 @@ private:
             pose_publisher_->publish(pose_msg);
             
             // Log the position (optional, can be commented out for performance)
-            RCLCPP_DEBUG(this->get_logger(), 
+            RCLCPP_INFO(this->get_logger(), 
                 "Fingertip pose: [%.3f, %.3f, %.3f]", x, y, z);
                 
         } catch (const tf2::TransformException &ex) {
             // This is normal at startup before TF tree is fully populated
-            RCLCPP_DEBUG(this->get_logger(), "Could not transform: %s", ex.what());
+            RCLCPP_INFO(this->get_logger(), "Could not transform: %s", ex.what());
         }
     }
     

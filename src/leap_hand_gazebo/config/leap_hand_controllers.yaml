@@ -1,5 +1,6 @@
 controller_manager:
   ros__parameters:
+    use_sim_time: true
     update_rate: 100  # Hz
 
     joint_state_broadcaster:
@@ -11,24 +12,24 @@ controller_manager:
 index_finger_controller:
   ros__parameters:
     joints:
-      - index_mcp
-      - index_pip
-      - index_dip
+      - mcp_joint
+      - pip
+      - dip
     command_interfaces:
       - position
     state_interfaces:
       - position
       - velocity
     gains:
-      index_mcp:
+      mcp_joint:
         p: 100.0
         i: 0.0
-        d: 1.0
-      index_pip:
-        p: 100.0
+        d: 0.1
+      pip:
+        p: 10.0
         i: 0.0
-        d: 1.0
-      index_dip:
-        p: 100.0
+        d: 0.1
+      dip:
+        p: 10.0
         i: 0.0
-        d: 1.0
+        d: 0.1
