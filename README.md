@@ -1,4 +1,4 @@
-# 🤖 Real-Time Tactile Sensing & Slip Detection Pipeline in ROS2
+# Real-Time Tactile Sensing & Slip Detection Pipeline in ROS2
 
 [![ROS2](https://img.shields.io/badge/ROS2-Jazzy-blue)](https://docs.ros.org/en/jazzy/)
 [![C++](https://img.shields.io/badge/C%2B%2B-17-orange)](https://isocpp.org/)
